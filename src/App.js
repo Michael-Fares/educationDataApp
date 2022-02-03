@@ -8,7 +8,7 @@ import React, {useState} from 'react'
 import './App.css';
 import ScoreCard from "./components/ScoreCard";
 
-const url = 'http://localhost:4000/educationapi'
+const url = 'https://secret-cove-48180.herokuapp.com/educationapi/educationapi'
 
 function App() {
   const [searched, setSearched] = useState(false)
