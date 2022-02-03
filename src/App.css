@@ -2,6 +2,10 @@
   text-align: center;
 }
 
+body {
+  background-color: #FFF8F3;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -27,6 +31,14 @@
 .App-link {
   color: #61dafb;
 }
+
+.data-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
 
 @keyframes App-logo-spin {
   from {

@@ -1,7 +1,6 @@
-import React, { PureComponent } from 'react';
-import { PieChart, Pie, Legend, Cell, Tooltip, ResponsiveContainer } from 'recharts';
+import { PieChart, Pie, Legend, Cell} from 'recharts';
 
-const StudentDemographicsPie = ({data, colors, pieLabler}) => {
+const DemographicsPie = ({data, colors, pieLabler}) => {
  
     const demographics = [
         { name:"Students 25 or older" , 
@@ -36,4 +35,4 @@ const StudentDemographicsPie = ({data, colors, pieLabler}) => {
     )
 }
 
-export default StudentDemographicsPie;
+export default DemographicsPie;
