@@ -8,14 +8,14 @@ import React, {useState} from 'react'
 import './App.css';
 import ScoreCard from "./components/ScoreCard";
 
-const url = 'https://secret-cove-48180.herokuapp.com/educationapi/educationapi'
+const url = 'https://secret-cove-48180.herokuapp.com/educationapi'
 
 function App() {
   const [searched, setSearched] = useState(false)
   const [search, setSearch] = useState("")
   const [choices, setChoies] = useState([])
   const [schoolId, setSchoolId] = useState(null)
-  const [schoolData, setSchoolData] = useState({})
+  const [schoolData, setSchoolData] = useState([])
   
   const handleChange = (e) => {
     e.preventDefault()
@@ -28,7 +28,7 @@ function App() {
       console.log(res.data.results)
       setChoies(res.data.results)
       setSearched(true)
-    })
+    }).catch(err => console.log("error", err))
   }
 
   const handleChooseSchool = (e) => {
@@ -40,9 +40,9 @@ function App() {
     e.preventDefault()
     if(schoolId) {
       axios.get(`${url}?id=${schoolId}`).then(res => {
-        console.log(res.data.results)
-        setSchoolData(res.data.results[0])
-      })
+        console.log("School Data at 0", res.data.results)
+        setSchoolData(res.data.results)
+      }).catch(err => console.log("error", err))
     }
   }
 
@@ -75,7 +75,12 @@ function App() {
       <button onClick={()=>setSearched(false)}>New Search</button> 
       </>}
       
-      {schoolData && <ScoreCard data={schoolData}/>}
+      {schoolData.map(data => {
+        return (
+          <ScoreCard key={data.latest.school.zip} data={data}/>
+        )
+      })}
+      
 
       
 </div>
