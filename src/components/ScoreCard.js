@@ -1,39 +1,39 @@
-import 'chart.js/auto';
-import { Chart } from 'react-chartjs-2';
-import React, { useState } from 'react'
+import StudentDemographicsPie from "./StudendDemographicsPie";
+import Chart from "./StudendDemographicsPie";
 
 const ScoreCard = ({data}) => {
+  const colors =  [
+    '#FF0000',
+    '#5C7AEA',
+    '#34BE82',
+    '#FFA900',
+    '#C6D57E',
+    '#88E0EF',
+    '#2F86A6',
+    '#911F27',
+    '#FFCC66',
+    '#0E918C'
+  ]
 
-  const [raceLables, setRaceLabels] = useState(["AIAN", "NHPI", "Asian", "White", "Unknown", "Hispanic", "Mixed-Race", "Non Resident Alien"])
-  const [raceData, setRaceData] = useState([10, 20, 30, 40, 30, 50, 30, 90])
+
+const pieLabler = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }) => {
+  const RADIAN = Math.PI / 180;
+  const radius = innerRadius + (outerRadius - innerRadius) * 1.4;
+  const x = cx + radius * Math.cos(-midAngle * RADIAN);
+  const y = cy + radius * Math.sin(-midAngle * RADIAN);
+
+  return (
+    <>
+    <text x={x} y={y} fill="black" textAnchor="middle" dominantBaseline="central">
+      {`${(percent * 100).toFixed(1)}%`}
+    </text>
+    </>
+  );
+};
+
 
   data = data.latest
 
-    // pieChart colors:
-
-    const colors =  [
-      '#FF0000',
-      '#5C7AEA',
-      '#34BE82',
-      '#FFA900',
-      '#C6D57E',
-      '#88E0EF',
-      '#2F86A6',
-      '#911F27',
-      '#FFCC66',
-      '#0E918C'
-    ]
-
-    const pieDataRace = {
-      labels: raceLables,
-      datasets: [{
-        label: `Racial/Enthic Demographics`,
-        data: raceData,
-        backgroundColor: colors,
-        borderColor:["black"],
-        borderWidth: 2
-      }]
-    }; 
 
   return (
   <>
@@ -48,6 +48,7 @@ const ScoreCard = ({data}) => {
     </section>
     <section>
       <h2>Student Body</h2>
+      <StudentDemographicsPie data={data} colors={colors} pieLabler={pieLabler}/>
       <p>{`Undergraduate enrollment: ${data.student.enrollment.undergrad_12_month}`}</p>
       <p>{`Graduate enrollment: ${data.student.enrollment.grad_12_month}`}</p>
       <p>{`Students 25 or older: ${(data.student.share_25_older * 100).toFixed(1)}%`}</p>
@@ -67,7 +68,7 @@ const ScoreCard = ({data}) => {
       <p>{`Unknown: ${(data.student.demographics.race_ethnicity.unknown * 100).toFixed(1)}%`}</p>
       <p>{`Mixed-Race: ${(data.student.demographics.race_ethnicity.two_or_more * 100).toFixed(1)}%`}</p>
       <p>{`Non-Resident-Alien: ${(data.student.demographics.race_ethnicity.non_resident_alien * 100).toFixed(1)}%`}</p>
-      <Chart type="pie" data={pieDataRace}/>
+      
     </section>
     <section>
       <h2>Cost</h2>
