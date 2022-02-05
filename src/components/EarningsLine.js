@@ -1,22 +1,51 @@
-import { XAxis, YAxis, BarChart, Bar, Legend, CartesianGrid, Tooltip, ResponsiveContainer} from 'recharts';
+import { XAxis, YAxis, BarChart, Bar, Legend, CartesianGrid, Tooltip, ResponsiveContainer, LineChart, Line} from 'recharts';
 
 const EarningsLine = ({ data }) => {
     data = data.earnings
 
     
-    const medianEarningsData = [
-        { "Years after entry": "6", "Median Earnings": data["6_yrs_after_entry"].median },
-        { "Years after entry": "7", "Median Earnings": 1 },
-        { "Years after entry": "8", "Median Earnings": 1 },
-        { "Years after entry": "9", "Median Earnings": 1 },
-        { "Years after entry": "10", "Median Earnings": 1 }
+    const meanEarningsData = [
+        { 
+            "Years after entry": "6 ", 
+            "Mean earnings": data["6_yrs_after_entry"].working_not_enrolled.mean_earnings,
+            "Male students": data["6_yrs_after_entry"].mean_earnings.male_students,
+            "Female students": data["6_yrs_after_entry"].mean_earnings.female_students,
+            "Lowest tercile": data["6_yrs_after_entry"].mean_earnings.lowest_tercile,
+            "Middle tercile": data["6_yrs_after_entry"].mean_earnings.middle_tercile,
+            "Highest tercile": data["6_yrs_after_entry"].mean_earnings.highest_tercile     
+        },
+
+        { 
+            "Years after entry": "10 ", 
+            "Mean earnings": data["10_yrs_after_entry"].working_not_enrolled.mean_earnings,
+            "Male students": data["10_yrs_after_entry"].mean_earnings.male_students,
+            "Female students": data["10_yrs_after_entry"].mean_earnings.female_students,
+            "Lowest tercile": data["10_yrs_after_entry"].mean_earnings.lowest_tercile,
+            "Middle tercile": data["10_yrs_after_entry"].mean_earnings.middle_tercile,
+            "Highest tercile": data["10_yrs_after_entry"].mean_earnings.highest_tercile    
+        }
     ]
     
-     console.log("median", medianEarningsData, data)
+     console.log("median", meanEarningsData)
 
     return (
        
-        <h1>EARNINGS DATA</h1>
+        <ResponsiveContainer width="100%" height={300} >
+           <BarChart data={meanEarningsData} margin={{left: 60, right: 60, top: 10, bottom: 20}}>
+                <CartesianGrid strokeDasharray="5 5" />
+                <Tooltip/>
+                <XAxis label={{ value: 'Years since entry', offset: -15, position: 'insideBottom' }} dataKey="Years after entry" type="category" unit="yrs" />
+    
+                <YAxis type="number" domain={[0, 'dataMax']} label={{ value: 'Earnings', offset: 30, angle: -90, position: 'left',}} dataKey="Mean earnings" unit="$" />
+                <Legend verticalAlign="top" height={65}/>
+                <Bar dataKey="Mean earnings" fill="#219F94" />
+                <Bar dataKey="Male students" fill="#DA1212" />
+                <Bar dataKey="Female students" fill="#11468F" />
+                <Bar dataKey="Lowest tercile" fill="#C1A3A3" />
+                <Bar dataKey="Middle tercile" fill="#886F6F" />
+                <Bar dataKey="Highest tercile" fill="#694E4E" />
+            </BarChart>
+        </ResponsiveContainer>
    
     )
 }
