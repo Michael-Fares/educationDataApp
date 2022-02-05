@@ -1,4 +1,4 @@
-import { PieChart, Pie, Legend, Cell} from 'recharts';
+import { PieChart, Pie, Legend, Cell, Tooltip} from 'recharts';
 
 const DemographicsPie = ({data, colors, pieLabler}) => {
  
