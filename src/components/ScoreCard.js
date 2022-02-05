@@ -3,7 +3,8 @@ import EthnicityPie from "./EthnicityPie";
 import GenderPie from "./GenderPie";
 import FacultyPie from "./FacultyPie";
 import CostBar from "./CostBar";
-import EarningsLine from "./EarningsLine";
+import EarningsBar from "./EarningsBar";
+import ExpenseBar from "./ExpenseBar";
 
 const ScoreCard = ({data}) => {
   const colors =  [
@@ -44,7 +45,10 @@ const pieLabler = ({ cx, cy, midAngle, innerRadius, outerRadius, percent }) => {
     <h1>{data.school.name}</h1>
     <section>
       <h2>School Facts</h2>
+      <section className="data-section">
       <FacultyPie data={data} colors={colors} pieLabler={pieLabler}/>
+      <ExpenseBar data={data} />
+      </section>
     </section>
     <section>
       <h2>Student Body</h2>
@@ -62,7 +66,7 @@ const pieLabler = ({ cx, cy, midAngle, innerRadius, outerRadius, percent }) => {
     </section>
     <section>
       <h2>Earnings</h2>
-      <EarningsLine data={data}/>
+      <EarningsBar data={data}/>
     </section>
     <section>
       <h2>Completion</h2>

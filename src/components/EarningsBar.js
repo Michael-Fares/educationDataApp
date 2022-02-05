@@ -1,6 +1,6 @@
 import { XAxis, YAxis, BarChart, Bar, Legend, CartesianGrid, Tooltip, ResponsiveContainer, LineChart, Line} from 'recharts';
 
-const EarningsLine = ({ data }) => {
+const EarningsBar = ({ data }) => {
     data = data.earnings
 
     
@@ -38,7 +38,7 @@ const EarningsLine = ({ data }) => {
     
                 <YAxis type="number" domain={[0, 'dataMax']} label={{ value: 'Earnings', offset: 30, angle: -90, position: 'left',}} dataKey="Mean earnings" unit="$" />
                 <Legend verticalAlign="top" height={65}/>
-                <Bar dataKey="Mean earnings" fill="#219F94" />
+                <Bar dataKey="Mean earnings" fill="#000000" />
                 <Bar dataKey="Male students" fill="#DA1212" />
                 <Bar dataKey="Female students" fill="#11468F" />
                 <Bar dataKey="Lowest tercile" fill="#C1A3A3" />
@@ -50,4 +50,4 @@ const EarningsLine = ({ data }) => {
     )
 }
 
-export default EarningsLine;
+export default EarningsBar;
