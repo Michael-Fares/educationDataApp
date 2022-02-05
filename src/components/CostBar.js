@@ -29,8 +29,8 @@ const CostBar = ({ data }) => {
                 <XAxis label={{ value: 'Family income level', offset: -15, position: 'insideBottom' }} dataKey="Family income" type="category" unit="$" />
     
                 <YAxis label={{ value: 'Average net cost', offset: 30, angle: -90, position: 'left',}} dataKey="Average net cost" unit="$" />
-                <Legend verticalAlign="top" />
-                <Bar dataKey="Average net cost" fill="#8884d8" />
+                <Legend verticalAlign="top" height={36}/>
+                <Bar dataKey="Average net cost" fill="#219F94" />
             </BarChart>
         </ResponsiveContainer>
    
