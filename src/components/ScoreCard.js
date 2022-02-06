@@ -5,6 +5,7 @@ import FacultyPie from "./FacultyPie";
 import CostBar from "./CostBar";
 import EarningsBar from "./EarningsBar";
 import ExpenseBar from "./ExpenseBar";
+import FactsList from "./FactsLists";
 
 const ScoreCard = ({data}) => {
   const colors =  [
@@ -47,6 +48,7 @@ const pieLabler = ({ cx, cy, midAngle, innerRadius, outerRadius, percent }) => {
       <h2>School Facts</h2>
       <section className="data-section">
       <FacultyPie data={data} colors={colors} pieLabler={pieLabler}/>
+      <FactsList data={data} />
       <ExpenseBar data={data} />
       </section>
     </section>
@@ -67,12 +69,6 @@ const pieLabler = ({ cx, cy, midAngle, innerRadius, outerRadius, percent }) => {
     <section>
       <h2>Earnings</h2>
       <EarningsBar data={data}/>
-    </section>
-    <section>
-      <h2>Completion</h2>
-    </section>
-    <section>
-      <h2>Admissions</h2>
     </section>
    
       

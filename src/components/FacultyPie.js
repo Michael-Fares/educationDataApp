@@ -14,7 +14,7 @@ const FacultyPie = ({data, colors, pieLabler}) => {
     return (
         <div>
             <PieChart width={400} height={400}>
-                <Legend verticalAlign="top" height={36}/>
+                <Legend verticalAlign="top" height={10}/>
                 <Pie data={facultyStatus} 
                 label={pieLabler}
                 dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={100} fill="#8884d8">

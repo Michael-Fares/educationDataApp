@@ -22,6 +22,8 @@ const ExpenseBar = ({ data }) => {
        
         <ResponsiveContainer width="100%" height={300} >
            <BarChart data={expenseData} margin={{left: 60, right: 60, top: 10, bottom: 20}}>
+           <Legend height={36} formatter={(value, entry, index) => {return "Instructional expenditures vs. tuition revenue"}} verticalAlign="top"/>
+
                 <CartesianGrid strokeDasharray="5 5" />
                 <Tooltip/>
                 <XAxis dataKey="name" type="category" />
