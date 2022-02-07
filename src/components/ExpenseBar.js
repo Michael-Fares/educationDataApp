@@ -1,4 +1,4 @@
-import { XAxis, YAxis, BarChart, Bar, Legend, CartesianGrid, Tooltip, ResponsiveContainer, LineChart, Line} from 'recharts';
+import { XAxis, YAxis, BarChart, Bar, Legend, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
 const ExpenseBar = ({ data }) => {
     data = data.school
@@ -20,15 +20,15 @@ const ExpenseBar = ({ data }) => {
 
     return (
        
-        <ResponsiveContainer width="100%" height={300} >
-           <BarChart data={expenseData} margin={{left: 60, right: 60, top: 10, bottom: 20}}>
+        <ResponsiveContainer width="100%" height={400} >
+           <BarChart data={expenseData} margin={{left: 90, right: 60, top: 10, bottom: 20}}>
            <Legend height={36} formatter={(value, entry, index) => {return "Instructional expenditures vs. tuition revenue"}} verticalAlign="top"/>
 
                 <CartesianGrid strokeDasharray="5 5" />
-                <Tooltip/>
+                <Tooltip formatter={(value, name, props) => [`$${value}`, null]}/>
                 <XAxis dataKey="name" type="category" />
     
-                <YAxis type="number" label={{ value: 'Spending and Revenue', offset: 30, angle: -90, position: 'left',}} dataKey="value" unit="$" />
+                <YAxis type="number"  dataKey="value" unit="$" />
                 <Bar dataKey="value" fill="#219F94" maxBarSize={130}/>  
             </BarChart>
         </ResponsiveContainer>

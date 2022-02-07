@@ -1,5 +1,4 @@
 import { XAxis, YAxis, BarChart, Bar, Legend, CartesianGrid, Tooltip, ResponsiveContainer} from 'recharts';
-import { formatData } from '../utilityFunctions';
 const CostBar = ({ data }) => {
     data = data.cost.net_price.consumer.by_income_level
     
@@ -9,7 +8,7 @@ const CostBar = ({ data }) => {
         for ( let key in obj ) {
           console.log (key, obj[key])
            let formatted = {
-            "Family income": key,
+            "Family income": `$${key}`,
             "Average net cost": obj[key]
           }
           data.push(formatted)
@@ -25,8 +24,8 @@ const CostBar = ({ data }) => {
         <ResponsiveContainer width="100%" height={300} >
            <BarChart data={costData} margin={{left: 60, right: 60, top: 10, bottom: 20}}>
                 <CartesianGrid strokeDasharray="5 5" />
-                <Tooltip/>
-                <XAxis label={{ value: 'Family income level', offset: -15, position: 'insideBottom' }} dataKey="Family income" type="category" unit="$" />
+                <Tooltip formatter={(value, name, props) => `$${value}`}/>
+                <XAxis label={{ value: 'Family income level', offset: -15, position: 'insideBottom' }} dataKey="Family income" type="category" />
     
                 <YAxis label={{ value: 'Average net cost', offset: 30, angle: -90, position: 'left',}} dataKey="Average net cost" unit="$" />
                 <Legend verticalAlign="top" height={36}/>
