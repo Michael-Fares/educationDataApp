@@ -1,11 +1,12 @@
-import DemographicsPie from "./DemographicsPie";
+import DemographicsBar from "./DemographicsBar";
 import EthnicityPie from "./EthnicityPie";
 import GenderPie from "./GenderPie";
 import FacultyPie from "./FacultyPie";
 import CostBar from "./CostBar";
 import EarningsBar from "./EarningsBar";
 import ExpenseBar from "./ExpenseBar";
-import FactsList from "./FactsLists";
+import EarningsPie from "./EarningsPie";
+import RatesBar from "./RatesBar";
 
 const ScoreCard = ({data}) => {
   const colors =  [
@@ -44,31 +45,35 @@ const pieLabler = ({ cx, cy, midAngle, innerRadius, outerRadius, percent }) => {
   return (
   <>
     <h1>{data.school.name}</h1>
-    <section>
+    <section className="mb">
       <h2>School Facts</h2>
       <section className="data-section">
+      <RatesBar data={data} />
       <FacultyPie data={data} colors={colors} pieLabler={pieLabler}/>
-      <FactsList data={data} />
+    
       <ExpenseBar data={data} />
       </section>
     </section>
-    <section>
+    <section className="mb">
       <h2>Student Body</h2>
+      
       <section className="data-section">
-      <DemographicsPie data={data} colors={colors} pieLabler={pieLabler}/>
+      
       <EthnicityPie data={data} colors={colors} pieLabler={pieLabler}/>
       <GenderPie data={data} colors={colors} pieLabler={pieLabler}/>
+      <DemographicsBar data={data} />
       </section>
     </section>
-    <section>
+    <section className="mb"> 
       <h2>Cost</h2>
       <section className="data-section">
       <CostBar data={data}/>
       </section>
     </section>
-    <section>
-      <h2>Earnings</h2>
+    <section className="mb">
+      <h2>Earnings after entry</h2>
       <EarningsBar data={data}/>
+      <EarningsPie data={data} colors={colors} pieLabler={pieLabler}/>
     </section>
    
       

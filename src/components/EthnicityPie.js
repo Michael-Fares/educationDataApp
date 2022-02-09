@@ -31,12 +31,12 @@ const EthnicityPie = ({data, colors, pieLabler}) => {
 
     return (
         <div>
-            <PieChart width={400} height={400}>
-                <Legend verticalAlign="top" height={60}/>
+            <PieChart width={500} height={600}>
+                <Legend iconSize={20} verticalAlign="top" height={100} align="left" formatter={(value, entry, index) => <span className="legend-text">{value}</span>}/>
                 <Tooltip formatter={ (value, name, props) => `${(value * 100).toFixed(1)}%` } />
                 <Pie data={ethnicity} 
                 label={pieLabler}
-                dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={100} fill="#8884d8">
+                dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={150} fill="#8884d8">
                     {
                         ethnicity.map((entry, index) => (
                             <Cell key={`cell-${index}`} fill={colors[index]}/>
