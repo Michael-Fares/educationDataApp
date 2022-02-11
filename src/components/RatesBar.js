@@ -28,7 +28,7 @@ const RatesBar = ({ data }) => {
        
         <ResponsiveContainer width="99%" height={600} >
            <BarChart data={ratesData} margin={{left: 90, right: 60, top: 10, bottom: 20}} layout="vertical">
-           <Legend iconSize={20} height={50} verticalAlign="top" formatter={(value, entry, index) => <span className="legend-text">Key rates</span>}/>
+           <Legend iconSize={20} height="10%" verticalAlign="top" formatter={(value, entry, index) => <span className="legend-text">Key rates</span>}/>
            
 
                 <CartesianGrid strokeDasharray="5 5" />

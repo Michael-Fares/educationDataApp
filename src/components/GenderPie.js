@@ -14,7 +14,7 @@ const GenderPie = ({data, colors, pieLabler}) => {
     return (
         <ResponsiveContainer height={500}>
             <PieChart >
-                <Legend iconSize={20}  verticalAlign="top" height={80} formatter={(value, entry, index) => <span className="legend-text">{value}</span>}/>
+                <Legend iconSize={20}  verticalAlign="top" height="10%" formatter={(value, entry, index) => <span className="legend-text">{value}</span>}/>
                 <Tooltip formatter={ (value, name, props) => `${(value * 100).toFixed(1)}%` } />
                 <Pie data={gender} 
                 label={pieLabler}

@@ -52,47 +52,54 @@ function App() {
   }
 
   return (
-  <div className="App">
-     
-     {searching && <SearchLoading />}
-     {fetchingData && <DataLoading />}
+  <>
+    <header className="header">
+    <article className="app-info">
+    <h1>Visual<span className="edu">Edu</span></h1>
+    <h4>Data Visualization for the U.S. Department of Education College Scorecard Data</h4>
+    </article>
+    <nav className={!searched ? "app-actions" : "app-actions active"}>
+    {!searched ? 
+        <>
+        <input type="search" placeholder="search for your school" id="school-search"
+        aria-label="Search for a school" list="school-names" onChange={handleChange}/>
+
+        <button className="btn search" onClick={handleSearch}>Search</button>
+        </>
+  
+        : 
+        <>
+        <select id="choose-school" onChange={handleChooseSchool} required defaultValue="Choose the name of your school from the results">
+          <option disabled>
+            Choose the name of your school from the results
+          </option>
+          {choices.map(choice => {
+            return (
+              <option id={choice.id} key={choice.id} value={choice.id}>{choice["school.name"]}</option>
+            )
+          })}
+        </select>
+        
+        <button className="btn data" onClick={handleSchoolData}>See Scorecard</button>
+        <button className="btn new-search" onClick={()=>setSearched(false)}>New Search</button> 
+        </>}
+      </nav>
+    </header>
+    <div className="App">
+      
+      {searching && <SearchLoading />}
+      {fetchingData && <DataLoading />}
 
 
-      {!searched ? 
-      <>
-      <label htmlFor="school-search">Search school:</label>
-      <input type="search" id="school-search"
-       aria-label="Search for a school" list="school-names" autoComplete="off" onChange={handleChange}/>
-
-      <button onClick={handleSearch}>Search</button>
-      </>
- 
-      : 
-      <>
-      <label htmlFor="choose-school">Choose School Name:</label>
-      <select id="choose-school" onChange={handleChooseSchool} required defaultValue="Choose the name of your school">
-        <option disabled>Choose the name of your school</option>
-        {choices.map(choice => {
+       
+        
+        {schoolData.map(data => {
           return (
-            <option id={choice.id} key={choice.id} value={choice.id}>{choice["school.name"]}</option>
+            <ScoreCard key={data.latest.school.zip} data={data}/>
           )
-        })}
-      </select>
-      
-      <button onClick={handleSchoolData}>See Data For School</button>
-      <button onClick={()=>setSearched(false)}>New Search</button> 
-      </>}
-      
-      {schoolData.map(data => {
-        return (
-          <ScoreCard key={data.latest.school.zip} data={data}/>
-        )
-      })}
-      
-
-      
-</div>
-
+        })}  
+  </div>
+</>
   );
 }
 

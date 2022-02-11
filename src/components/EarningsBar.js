@@ -37,7 +37,7 @@ const EarningsBar = ({ data }) => {
                 <YAxis label={{ value: 'Years since entry', angle: -90, position: 'left' }} dataKey="Years after entry" type="category" />
     
                 <XAxis orientation="top" type="number" domain={[0, 'auto']} label={{ value: 'Earnings', position: 'top',}} dataKey="Overall Mean earnings" unit="$" />
-                <Legend iconSize={20} align="left" verticalAlign="top" height={130} formatter={(value, entry, index) => <span className="legend-text">{value}</span>}/>
+                <Legend iconSize={20} align="left" verticalAlign="top" height="25%" formatter={(value, entry, index) => <span className="legend-text">{value}</span>}/>
                 <Bar dataKey="Overall Mean earnings" fill="#000000" />
                 <Bar dataKey="Male students" fill="#FF0000" />
                 <Bar dataKey="Female students" fill="#5C7AEA" />

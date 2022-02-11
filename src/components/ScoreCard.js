@@ -46,7 +46,7 @@ const pieLabler = ({ cx, cy, midAngle, innerRadius, outerRadius, percent }) => {
   <>
     <h1>{data.school.name}</h1>
     <section className="mb school-facts">
-      <h2>School Facts</h2>
+      <h2 className="mt">School Facts</h2>
       <section className="data-section">
         <RatesBar data={data} />
         <FacultyPie data={data} colors={colors} pieLabler={pieLabler}/>
@@ -55,7 +55,7 @@ const pieLabler = ({ cx, cy, midAngle, innerRadius, outerRadius, percent }) => {
     </section>
 
     <section className="mb student-body">
-      <h2>Student Body</h2>
+      <h2 className="mb">Student Body</h2>
       <section className="data-section">
         <EthnicityPie data={data} colors={colors} pieLabler={pieLabler}/>
         <GenderPie data={data} colors={colors} pieLabler={pieLabler}/>
@@ -63,11 +63,11 @@ const pieLabler = ({ cx, cy, midAngle, innerRadius, outerRadius, percent }) => {
       <DemographicsBar data={data} /> 
     </section>
     <section className="mb cost"> 
-      <h2>Cost</h2>
+      <h2 className="mb">Cost</h2>
       <CostBar data={data}/>    
     </section>
     <section className="mb">
-      <h2>Earnings after entry</h2>
+      <h2 className="mb">Earnings after entry</h2>
       <section className="data-section">
         <EarningsBar data={data}/>
         <EarningsPie data={data} colors={colors} pieLabler={pieLabler}/>
