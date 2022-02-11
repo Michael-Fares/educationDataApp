@@ -4,8 +4,8 @@ import axios from 'axios';
 import React, {useState} from 'react'
 import './App.css';
 import ScoreCard from "./components/ScoreCard";
-import SearchLoading from './SearchLoading';
-import DataLoading from './DataLoading';
+import SearchLoading from './components/SearchLoading';
+import DataLoading from './components/DataLoading';
 
 const url = 'https://secret-cove-48180.herokuapp.com/educationapi'
 

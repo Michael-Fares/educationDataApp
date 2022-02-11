@@ -12,8 +12,8 @@ const FacultyPie = ({data, colors, pieLabler}) => {
     ]
 
     return (
-        <ResponsiveContainer width="100%" height={500}>
-            <PieChart margin={{top: 60}}>
+        <ResponsiveContainer width="99%" height={500}>
+            <PieChart margin={{top: 10}}>
                 <Legend iconSize={20} verticalAlign="top" height={100} formatter={(value, entry, index) => <span className="legend-text">{value}</span>}/>
                 <Tooltip formatter={ (value, name, props) => `${(value * 100).toFixed(1)}%` } />
                 <Pie data={facultyStatus} 

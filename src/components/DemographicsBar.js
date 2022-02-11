@@ -20,15 +20,15 @@ const DemographicsBar = ({ data }) => {
     return (
         <ResponsiveContainer width="100%" height={600} >
            <BarChart data={demographics} margin={{left: 90, right: 60, top: 10, bottom: 20}} layout="vertical">
-           <Legend iconSize={20} height={100} verticalAlign="top" formatter={(value, entry, index) => <span className="legend-text">Key demographics</span>}/>
+           <Legend iconSize={20} height={50} verticalAlign="top" formatter={(value, entry, index) => <span className="legend-text">Key demographics</span>}/>
            
 
                 <CartesianGrid strokeDasharray="5 5" />
                 <Tooltip formatter={(value, name, props) => [`${value}%`, null]}/>
                 <YAxis dataKey="name" type="category" />
     
-                <XAxis domain={[0,100]} type="number"  dataKey="value" unit="%" />
-                <Bar dataKey="value" fill="#2F86A6" maxBarSize={130}>
+                <XAxis orientation="top" domain={[0,100]} type="number"  dataKey="value" unit="%" />
+                <Bar dataKey="value" fill="#D67D3E" maxBarSize={130}>
                     <LabelList dataKey="value" position="right" formatter={(value) => `${value}%`} />
                 </Bar>  
             </BarChart>

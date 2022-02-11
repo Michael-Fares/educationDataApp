@@ -1,4 +1,4 @@
-import { PieChart, Pie, Legend, Cell, Tooltip, Label} from 'recharts';
+import { PieChart, Pie, Legend, Cell, Tooltip, ResponsiveContainer} from 'recharts';
 
 const EarningsPie = ({data, colors, pieLabler}) => {
     data = data.earnings
@@ -24,35 +24,36 @@ const EarningsPie = ({data, colors, pieLabler}) => {
     return (
    
         <section className="data-section mt">
-            <PieChart width={325} height={400}>
-                <Legend iconSize={20} verticalAlign="top" height={10} align="left" />
-                <Tooltip formatter={ (value, name, props) => `${(value * 100).toFixed(1)}%` } />
-                <Pie data={earningsSix} 
-                label={pieLabler}
-                dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={100}>
-                    {
-                        earningsSix.map((entry, index) => (
-                            <Cell key={`cell-${index}`} fill={colors[index + 1]}/>
-                        ))
-                    }
-                </Pie> 
-                
-            </PieChart>
-            <PieChart width={325} height={400}>
-                <Legend iconSize={20}  verticalAlign="top" height={10} align="left"/>
-                <Tooltip formatter={ (value, name, props) => `${(value * 100).toFixed(1)}%` } />
-                <Pie data={earningsTen} 
-                label={pieLabler}
-                dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={100}>
-                    {
-                        earningsTen.map((entry, index) => (
-                            <Cell key={`cell-${index}`} fill={colors[index + 1]}/>
-                        ))
-                    }
-                </Pie> 
-                
-            </PieChart>
-     
+            <ResponsiveContainer width="99%" height={400}>
+                <PieChart >
+                    <Legend iconSize={20} verticalAlign="top" height={10} align="left" />
+                    <Tooltip formatter={ (value, name, props) => `${(value * 100).toFixed(1)}%` } />
+                    <Pie data={earningsSix} 
+                    label={pieLabler}
+                    dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={100}>
+                        {
+                            earningsSix.map((entry, index) => (
+                                <Cell key={`cell-${index}`} fill={colors[index + 1]}/>
+                            ))
+                        }
+                    </Pie>     
+                </PieChart>
+                </ResponsiveContainer>
+                <ResponsiveContainer width="99%" height={400}>
+                <PieChart >
+                    <Legend iconSize={20} verticalAlign="top" height={10} align="left"/>
+                    <Tooltip formatter={ (value, name, props) => `${(value * 100).toFixed(1)}%` } />
+                    <Pie data={earningsTen} 
+                    label={pieLabler}
+                    dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={100}>
+                        {
+                            earningsTen.map((entry, index) => (
+                                <Cell key={`cell-${index}`} fill={colors[index + 1]}/>
+                            ))
+                        }
+                    </Pie> 
+                </PieChart>
+            </ResponsiveContainer>
         </section>
   
     )

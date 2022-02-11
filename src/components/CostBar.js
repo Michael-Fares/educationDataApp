@@ -25,9 +25,9 @@ const CostBar = ({ data }) => {
            <BarChart data={costData} margin={{left: 90, right: 70, top: 10, bottom: 20}} layout="vertical">
                 <CartesianGrid strokeDasharray="5 5" />
                 <Tooltip formatter={(value, name, props) => `$${value}`}/>
-                <YAxis label={{ value: 'Income level', offset: 15, position: 'top' }} dataKey="Income level" type="category" />
+                <YAxis label={{ value: 'Income level', offset: 75, angle: -90, position: 'left' }} dataKey="Income level" type="category" />
     
-                <XAxis label={{ value: 'Avg net cost', position: 'bottom',}} dataKey="Average net cost based on income level" unit="$" type="number"/>
+                <XAxis orientation="top" label={{ value: 'Avg net cost', position: 'top',}} dataKey="Average net cost based on income level" unit="$" type="number"/>
                 <Legend iconSize={20} verticalAlign="top" height={100} formatter={(value, entry, index) => <span className="legend-text">{value}</span>}/>
                 <Bar dataKey="Average net cost based on income level" fill="#219F94">
                   <LabelList dataKey="Average net cost based on income level" position="right" formatter={(value) => `$${value}`} />

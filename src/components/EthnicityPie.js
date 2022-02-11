@@ -31,9 +31,9 @@ const EthnicityPie = ({data, colors, pieLabler}) => {
     ]
 
     return (
-        <ResponsiveContainer width="100%" height={600}>
+        <ResponsiveContainer width="100%" height={500}>
             <PieChart margin={{left: 10}}>
-                <Legend iconSize={20} verticalAlign="top" height={100}  formatter={(value, entry, index) => <span className="legend-text">{value}</span>}/>
+                <Legend iconSize={20} align="left" verticalAlign="top" height={100}  formatter={(value, entry, index) => <span className="legend-text">{value}</span>}/>
                 <Tooltip formatter={ (value, name, props) => `${(value * 100).toFixed(1)}%` } />
                 <Pie data={ethnicity} 
                 label={pieLabler}

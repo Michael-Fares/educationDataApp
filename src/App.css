@@ -23,10 +23,8 @@ ul, ol {
 
 
 .data-section {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
 }
 .loading-screen {
   display: flex;
@@ -38,13 +36,13 @@ ul, ol {
 }
 @keyframes search {
   0% {
-    transform: translateX(-90px);
-  }
-  50% {
     transform: translateX(0);
   }
-  100% {
+  50% {
     transform: translateX(90px);
+  }
+  100% {
+    transform: translateX(0);
   }
 }
 .loading-screen-search {
@@ -70,3 +68,9 @@ ul, ol {
 .mt {
   margin-top: 2rem;
 }
+
+@media screen and (max-width: 600px) {
+  .data-section {
+    grid-template-columns: 1fr;
+  }
+} 

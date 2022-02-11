@@ -45,41 +45,34 @@ const pieLabler = ({ cx, cy, midAngle, innerRadius, outerRadius, percent }) => {
   return (
   <>
     <h1>{data.school.name}</h1>
-    <section className="mb">
+    <section className="mb school-facts">
       <h2>School Facts</h2>
       <section className="data-section">
-      <RatesBar data={data} />
-      <FacultyPie data={data} colors={colors} pieLabler={pieLabler}/>
-    
-      <ExpenseBar data={data} />
+        <RatesBar data={data} />
+        <FacultyPie data={data} colors={colors} pieLabler={pieLabler}/>
       </section>
+        <ExpenseBar data={data} />
     </section>
-    <section className="mb">
+
+    <section className="mb student-body">
       <h2>Student Body</h2>
-      
       <section className="data-section">
-      
-      <EthnicityPie data={data} colors={colors} pieLabler={pieLabler}/>
-      <GenderPie data={data} colors={colors} pieLabler={pieLabler}/>
-      <DemographicsBar data={data} />
+        <EthnicityPie data={data} colors={colors} pieLabler={pieLabler}/>
+        <GenderPie data={data} colors={colors} pieLabler={pieLabler}/>
       </section>
+      <DemographicsBar data={data} /> 
     </section>
-    <section className="mb"> 
+    <section className="mb cost"> 
       <h2>Cost</h2>
-      <section className="data-section">
-      <CostBar data={data}/>
-      </section>
+      <CostBar data={data}/>    
     </section>
     <section className="mb">
       <h2>Earnings after entry</h2>
-      <EarningsBar data={data}/>
-      <EarningsPie data={data} colors={colors} pieLabler={pieLabler}/>
-    </section>
-   
-      
-      
-      
-    
+      <section className="data-section">
+        <EarningsBar data={data}/>
+        <EarningsPie data={data} colors={colors} pieLabler={pieLabler}/>
+      </section>
+    </section> 
   </>
   )
 }

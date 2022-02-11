@@ -26,16 +26,16 @@ const RatesBar = ({ data }) => {
 
     return (
        
-        <ResponsiveContainer width="100%" height={600} >
+        <ResponsiveContainer width="99%" height={600} >
            <BarChart data={ratesData} margin={{left: 90, right: 60, top: 10, bottom: 20}} layout="vertical">
-           <Legend iconSize={20} height={100} verticalAlign="top" formatter={(value, entry, index) => <span className="legend-text">Key rates</span>}/>
+           <Legend iconSize={20} height={50} verticalAlign="top" formatter={(value, entry, index) => <span className="legend-text">Key rates</span>}/>
            
 
                 <CartesianGrid strokeDasharray="5 5" />
                 <Tooltip formatter={(value, name, props) => [`${value}%`, null]}/>
                 <YAxis dataKey="name" type="category" interval={0} />
     
-                <XAxis domain={[0,100]} type="number"  dataKey="value" unit="%" />
+                <XAxis orientation="top" domain={[0,100]} type="number"  dataKey="value" unit="%" />
                 <Bar dataKey="value" fill="#2F86A6" maxBarSize={130}>
                     <LabelList dataKey="value" position="right" formatter={(value) => `${value}%`} />
                 </Bar>  
