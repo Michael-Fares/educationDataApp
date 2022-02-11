@@ -1,11 +1,9 @@
-import { PieChart, Pie, Legend, Cell, Tooltip} from 'recharts';
+import { PieChart, Pie, Legend, Cell, Tooltip, ResponsiveContainer} from 'recharts';
 
 const EthnicityPie = ({data, colors, pieLabler}) => {
  
     const ethnicity = [
-        { name:"American Indian/Alaska Native/Native Hawaiian and Pacific Islander" , 
-        value: data.student.demographics.race_ethnicity.aian + data.student.demographics.race_ethnicity.nhpi
-        },
+       
         { name:"Asian" , 
         value: data.student.demographics.race_ethnicity.asian
         },
@@ -26,17 +24,20 @@ const EthnicityPie = ({data, colors, pieLabler}) => {
         },
         { name: "Non-Resident-Alien" , 
         value: data.student.demographics.race_ethnicity.non_resident_alien
+        },
+        { name:"American Indian/Alaska Native/Native Hawaiian and Pacific Islander" , 
+        value: data.student.demographics.race_ethnicity.aian + data.student.demographics.race_ethnicity.nhpi
         }
     ]
 
     return (
-        <div>
-            <PieChart width={500} height={600}>
-                <Legend iconSize={20} verticalAlign="top" height={100} align="left" formatter={(value, entry, index) => <span className="legend-text">{value}</span>}/>
+        <ResponsiveContainer width="100%" height={600}>
+            <PieChart margin={{left: 10}}>
+                <Legend iconSize={20} verticalAlign="top" height={100}  formatter={(value, entry, index) => <span className="legend-text">{value}</span>}/>
                 <Tooltip formatter={ (value, name, props) => `${(value * 100).toFixed(1)}%` } />
                 <Pie data={ethnicity} 
                 label={pieLabler}
-                dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={150} fill="#8884d8">
+                dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius="60%" fill="#8884d8">
                     {
                         ethnicity.map((entry, index) => (
                             <Cell key={`cell-${index}`} fill={colors[index]}/>
@@ -44,7 +45,7 @@ const EthnicityPie = ({data, colors, pieLabler}) => {
                     }
                 </Pie> 
             </PieChart>
-        </div>
+        </ResponsiveContainer>
     )
 }
 

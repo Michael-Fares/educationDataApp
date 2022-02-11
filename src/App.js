@@ -1,20 +1,21 @@
-/**
- * shoselectd be first query
- * http://localhost:4000/educationapi?school.name=Boston%20College&fields=id,school.name
- */
+
 
 import axios from 'axios';
 import React, {useState} from 'react'
 import './App.css';
 import ScoreCard from "./components/ScoreCard";
+import SearchLoading from './SearchLoading';
+import DataLoading from './DataLoading';
 
 const url = 'https://secret-cove-48180.herokuapp.com/educationapi'
 
 function App() {
+  const [searching, setSearching] = useState(false)
   const [searched, setSearched] = useState(false)
   const [search, setSearch] = useState("")
   const [choices, setChoies] = useState([])
   const [schoolId, setSchoolId] = useState(null)
+  const [fetchingData, setFetchingData] = useState(false)
   const [schoolData, setSchoolData] = useState([])
   
   const handleChange = (e) => {
@@ -24,9 +25,11 @@ function App() {
 
   const handleSearch = (e) => {
     e.preventDefault()
+    setSearching(true)
     axios.get(`${url}?school.name=${search}&fields=id,school.name`).then(res => {
       console.log(res.data.results)
       setChoies(res.data.results)
+      setSearching(false)
       setSearched(true)
     }).catch(err => console.log("error", err))
   }
@@ -39,8 +42,10 @@ function App() {
   const handleSchoolData = (e) => {
     e.preventDefault()
     if(schoolId) {
+      setFetchingData(true)
       axios.get(`${url}?id=${schoolId}`).then(res => {
         console.log("School Data at 0", res.data.results)
+        setFetchingData(false)
         setSchoolData(res.data.results)
       }).catch(err => console.log("error", err))
     }
@@ -49,7 +54,10 @@ function App() {
   return (
   <div className="App">
      
-      
+     {searching && <SearchLoading />}
+     {fetchingData && <DataLoading />}
+
+
       {!searched ? 
       <>
       <label htmlFor="school-search">Search school:</label>

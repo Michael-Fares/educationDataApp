@@ -1,4 +1,4 @@
-import { PieChart, Pie, Legend, Cell, Tooltip} from 'recharts';
+import { PieChart, Pie, Legend, Cell, Tooltip, ResponsiveContainer} from 'recharts';
 
 const FacultyPie = ({data, colors, pieLabler}) => {
  
@@ -12,21 +12,21 @@ const FacultyPie = ({data, colors, pieLabler}) => {
     ]
 
     return (
-        <div>
-            <PieChart width={800} height={500}>
-                <Legend iconSize={20} verticalAlign="top" height={10} formatter={(value, entry, index) => <span className="legend-text">{value}</span>}/>
+        <ResponsiveContainer width="100%" height={500}>
+            <PieChart margin={{top: 60}}>
+                <Legend iconSize={20} verticalAlign="top" height={100} formatter={(value, entry, index) => <span className="legend-text">{value}</span>}/>
                 <Tooltip formatter={ (value, name, props) => `${(value * 100).toFixed(1)}%` } />
                 <Pie data={facultyStatus} 
                 label={pieLabler}
-                dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={150} fill="#8884d8">
+                dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius="70%" fill="#8884d8">
                     {
                         facultyStatus.map((entry, index) => (
-                            <Cell key={`cell-${index}`} fill={colors[index]}/>
+                            <Cell key={`cell-${index}`} fill={colors[index + 2]}/>
                         ))
                     }
                 </Pie> 
             </PieChart>
-        </div>
+        </ResponsiveContainer >
     )
 }
 

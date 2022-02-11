@@ -30,17 +30,17 @@ const EarningsBar = ({ data }) => {
 
     return (
        
-        <ResponsiveContainer width="100%" height={400} >
-           <BarChart data={meanEarningsData} margin={{left: 60, right: 60, top: 10, bottom: 20}}>
+        <ResponsiveContainer width="100%" height={700} >
+           <BarChart data={meanEarningsData} margin={{left: 40, right: 90, top: 10, bottom: 20}} layout="vertical">
                 <CartesianGrid strokeDasharray="5 5" />
                 <Tooltip formatter={(value, name, props) => [`$${value}`, name]}/>
-                <XAxis label={{ value: 'Years since entry', offset: -15, position: 'insideBottom' }} dataKey="Years after entry" type="category" />
+                <YAxis label={{ value: 'Years since entry', angle: -90, position: 'left' }} dataKey="Years after entry" type="category" />
     
-                <YAxis type="number" domain={[0, 'dataMax']} label={{ value: 'Earnings', offset: 30, angle: -90, position: 'left',}} dataKey="Overall Mean earnings" unit="$" />
-                <Legend iconSize={20} verticalAlign="top" height={100} formatter={(value, entry, index) => <span className="legend-text">{value}</span>}/>
+                <XAxis type="number" domain={[0, 'auto']} label={{ value: 'Earnings', position: 'bottom',}} dataKey="Overall Mean earnings" unit="$" />
+                <Legend iconSize={20} verticalAlign="top" height={130} formatter={(value, entry, index) => <span className="legend-text">{value}</span>}/>
                 <Bar dataKey="Overall Mean earnings" fill="#000000" />
-                <Bar dataKey="Male students" fill="#DA1212" />
-                <Bar dataKey="Female students" fill="#11468F" />
+                <Bar dataKey="Male students" fill="#FF0000" />
+                <Bar dataKey="Female students" fill="#5C7AEA" />
                 <Bar dataKey="Lowest tercile" fill="#C1A3A3" />
                 <Bar dataKey="Middle tercile" fill="#886F6F" />
                 <Bar dataKey="Highest tercile" fill="#694E4E" />

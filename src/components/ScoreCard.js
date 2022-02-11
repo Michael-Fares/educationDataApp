@@ -31,7 +31,7 @@ const pieLabler = ({ cx, cy, midAngle, innerRadius, outerRadius, percent }) => {
 
   return (
     <>
-    <text x={x} y={y} fill="black" textAnchor="middle" dominantBaseline="central">
+    <text x={x} y={y} fill="black" textAnchor="middle" dominantBaseline="center">
       {`${(percent * 100).toFixed(1)}%`}
     </text>
     </>

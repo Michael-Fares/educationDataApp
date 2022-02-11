@@ -1,4 +1,4 @@
-import { PieChart, Pie, Legend, Cell, Tooltip} from 'recharts';
+import { PieChart, Pie, Legend, Cell, Tooltip, ResponsiveContainer} from 'recharts';
 
 const GenderPie = ({data, colors, pieLabler}) => {
  
@@ -12,13 +12,13 @@ const GenderPie = ({data, colors, pieLabler}) => {
     ]
 
     return (
-        <div>
-            <PieChart width={500} height={600}>
-                <Legend iconSize={20}  verticalAlign="top" height={100} formatter={(value, entry, index) => <span className="legend-text">{value}</span>}/>
+        <ResponsiveContainer height={500}>
+            <PieChart >
+                <Legend iconSize={20}  verticalAlign="top" height={10} formatter={(value, entry, index) => <span className="legend-text">{value}</span>}/>
                 <Tooltip formatter={ (value, name, props) => `${(value * 100).toFixed(1)}%` } />
                 <Pie data={gender} 
                 label={pieLabler}
-                dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={150} fill="#8884d8">
+                dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius="60%" fill="#8884d8">
                     {
                         gender.map((entry, index) => (
                             <Cell key={`cell-${index}`} fill={colors[index]}/>
@@ -26,7 +26,7 @@ const GenderPie = ({data, colors, pieLabler}) => {
                     }
                 </Pie> 
             </PieChart>
-        </div>
+        </ResponsiveContainer>
     )
 }
 

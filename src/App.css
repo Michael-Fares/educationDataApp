@@ -22,14 +22,48 @@ ul, ol {
 }
 
 
-
 .data-section {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
 }
-
+.loading-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  height: 100vh;
+}
+@keyframes search {
+  0% {
+    transform: translateX(-90px);
+  }
+  50% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(90px);
+  }
+}
+.loading-screen-search {
+  animation: search 3s infinite;
+}
+.loading-scrteen-flex-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+.loading-screen-pie {
+  z-index: 100;
+  animation: search 1s infinite;
+}
+.loading-screen-bar {
+  animation: search 1s infinite reverse;
+}
 .mb {
   margin-bottom: 2rem;
 }

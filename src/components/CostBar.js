@@ -21,16 +21,16 @@ const CostBar = ({ data }) => {
 
     return (
        
-        <ResponsiveContainer width="100%" height={400} >
-           <BarChart data={costData} margin={{left: 60, right: 60, top: 10, bottom: 20}}>
+        <ResponsiveContainer width="100%" height={700} >
+           <BarChart data={costData} margin={{left: 90, right: 70, top: 10, bottom: 20}} layout="vertical">
                 <CartesianGrid strokeDasharray="5 5" />
                 <Tooltip formatter={(value, name, props) => `$${value}`}/>
-                <XAxis label={{ value: 'Income level', offset: -15, position: 'insideBottom' }} dataKey="Income level" type="category" />
+                <YAxis label={{ value: 'Income level', offset: 15, position: 'top' }} dataKey="Income level" type="category" />
     
-                <YAxis label={{ value: 'Avg net cost', offset: 30, angle: -90, position: 'left',}} dataKey="Average net cost based on income level" unit="$" />
+                <XAxis label={{ value: 'Avg net cost', position: 'bottom',}} dataKey="Average net cost based on income level" unit="$" type="number"/>
                 <Legend iconSize={20} verticalAlign="top" height={100} formatter={(value, entry, index) => <span className="legend-text">{value}</span>}/>
                 <Bar dataKey="Average net cost based on income level" fill="#219F94">
-                  <LabelList dataKey="Average net cost based on income level" position="top" formatter={(value) => `$${value}`} />
+                  <LabelList dataKey="Average net cost based on income level" position="right" formatter={(value) => `$${value}`} />
                 </Bar>
             </BarChart>
         </ResponsiveContainer>

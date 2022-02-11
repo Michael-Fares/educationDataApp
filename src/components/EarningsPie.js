@@ -24,7 +24,7 @@ const EarningsPie = ({data, colors, pieLabler}) => {
     return (
    
         <section className="data-section mt">
-            <PieChart width={400} height={400}>
+            <PieChart width={325} height={400}>
                 <Legend iconSize={20} verticalAlign="top" height={10} align="left" />
                 <Tooltip formatter={ (value, name, props) => `${(value * 100).toFixed(1)}%` } />
                 <Pie data={earningsSix} 
@@ -38,7 +38,7 @@ const EarningsPie = ({data, colors, pieLabler}) => {
                 </Pie> 
                 
             </PieChart>
-            <PieChart width={400} height={400}>
+            <PieChart width={325} height={400}>
                 <Legend iconSize={20}  verticalAlign="top" height={10} align="left"/>
                 <Tooltip formatter={ (value, name, props) => `${(value * 100).toFixed(1)}%` } />
                 <Pie data={earningsTen} 
