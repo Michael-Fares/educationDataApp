@@ -26,7 +26,7 @@ const RatesBar = ({ data }) => {
 
     return (
        
-        <ResponsiveContainer width="99%" height={600} >
+        <ResponsiveContainer width="99%" height={450} >
            <BarChart data={ratesData} margin={{left: 90, right: 60, top: 10, bottom: 20}} layout="vertical">
            <Legend iconSize={20} height="10%" verticalAlign="top" formatter={(value, entry, index) => <span className="legend-text">Key rates</span>}/>
            

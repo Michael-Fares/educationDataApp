@@ -50,13 +50,14 @@ function App() {
       }).catch(err => console.log("error", err))
     }
   }
-
+  const isDisabled = !schoolId
+  const searchDisabed = !search
   return (
   <>
     <header className="header">
     <article className="app-info">
     <h1>Visual<span className="edu">Edu</span></h1>
-    <h4>Data Visualization for the U.S. Department of Education College Scorecard Data</h4>
+    <h4>Data Visualization for the Latest Available U.S. Department of Education College Scorecard Data</h4>
     </article>
     <nav className={!searched ? "app-actions" : "app-actions active"}>
     {!searched ? 
@@ -64,23 +65,25 @@ function App() {
         <input type="search" placeholder="search for your school" id="school-search"
         aria-label="Search for a school" list="school-names" onChange={handleChange}/>
 
-        <button className="btn search" onClick={handleSearch}>Search</button>
+        <button disabled={searchDisabed} className="btn search" onClick={handleSearch}>Search</button>
         </>
   
         : 
         <>
-        <select id="choose-school" onChange={handleChooseSchool} required defaultValue="Choose the name of your school from the results">
-          <option disabled>
-            Choose the name of your school from the results
-          </option>
-          {choices.map(choice => {
-            return (
-              <option id={choice.id} key={choice.id} value={choice.id}>{choice["school.name"]}</option>
-            )
-          })}
-        </select>
+        <div className="select">
+          <select id="choose-school" onChange={handleChooseSchool} required defaultValue="Choose the name of your school from the results">
+            <option disabled>
+              Choose the name of your school from the results
+            </option>
+            {choices.map(choice => {
+              return (
+                <option id={choice.id} key={choice.id} value={choice.id}>{choice["school.name"]}</option>
+              )
+            })}
+          </select>
+        </div>
         
-        <button className="btn data" onClick={handleSchoolData}>See Scorecard</button>
+        <button disabled={isDisabled} className="btn data" onClick={handleSchoolData}>See Scorecard</button>
         <button className="btn new-search" onClick={()=>setSearched(false)}>New Search</button> 
         </>}
       </nav>

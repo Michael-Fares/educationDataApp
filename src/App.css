@@ -24,6 +24,7 @@ body {
 .edu {
   color: rgba(236,196,136)
 }
+
 .app-info {
   display: flex;
   flex-direction: column;
@@ -54,7 +55,7 @@ body {
   text-align: center;
   padding: 0.5rem;
   width: 90vw;
-  animation: flash 0.5s 3;
+  animation: flash 1s 2;
  }
 
 .search {
@@ -67,12 +68,30 @@ body {
   text-transform: uppercase;
   border: none;
   border-radius: 5px;
+  transition: 0.2s ease-in-out all;
+}
+.btn:hover {
+  box-shadow: 0 0 10px white;
+}
+
+button.btn[disabled] {
+  background-color: #D3D3D3;
+  color: black;
+  cursor: unset;
+}
+button.btn[disabled]:hover {
+  box-shadow: unset;
 }
 
 .btn.data, .btn.new-search {
   width: 40vw;
   background-color: rgba(17,20,20,0.9);
   color: white;
+}
+.heading {
+  background-color: rgba(17,20,20,0.9);
+  color: white;
+  padding: 0.5rem 0;
 }
 
 ul, ol {
@@ -102,13 +121,14 @@ ul, ol {
 }
 @keyframes search {
   0% {
-    transform: translateX(0);
+    transform: translateX(40px);
   }
   50% {
-    transform: translateX(90px);
+    transform: translateX(0);
+    color: rgba(236,196,136);
   }
   100% {
-    transform: translateX(0);
+    transform: translateX(40px);
   }
 }
 @keyframes flash {
@@ -139,6 +159,12 @@ ul, ol {
 .mt {
   margin-top: 2rem;
 }
+.mb-sm {
+  margin-bottom: 0.5rem;
+}
+.mt-sm {
+  margin-top: 0.5rem;
+}
 
 @media screen and (max-width: 600px) {
   .data-section {
@@ -147,5 +173,8 @@ ul, ol {
   .btn.data, .btn.new-search {
     width: 30vw;
     flex: 1;
+  }
+  #choose-school {
+    font-size: 0.75rem;
   }
 } 
