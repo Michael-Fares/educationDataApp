@@ -7,7 +7,7 @@ import ScoreCard from "./components/ScoreCard";
 import SearchLoading from './components/SearchLoading';
 import DataLoading from './components/DataLoading';
 
-const url = 'https://secret-cove-48180.herokuapp.com/educationapi'
+const url = 'https://education-data-app.fly.dev/educationapi'
 
 function App() {
   const [searching, setSearching] = useState(false)
